@@ -1,3 +1,3 @@
-##react-native-app
+react-native-app
 
 Aplication for react-native
