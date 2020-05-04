@@ -8,7 +8,7 @@ interface Props {
 
 export function AddTodo({onSubmit}: Props) {
   function pressHandler() {
-    onSubmit('New Todos');
+    onSubmit('Add new Todos');
   }
 
   return (
