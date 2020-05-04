@@ -2,12 +2,19 @@
 import React from 'react';
 import { StyleSheet, TextInput, Button, View } from 'react-native';
 
-export function AddTodo() {
+interface Props {
+  onSubmit(title: string): void;
+}
+
+export function AddTodo({onSubmit}: Props) {
+  function pressHandler() {
+    onSubmit('New Todos');
+  }
 
   return (
     <View style={styles.block}>
       <TextInput style={styles.input} />
-      <Button title="Добавить" />
+      <Button title="Добавить" onPress={pressHandler} />
     </View>
   );
 }
