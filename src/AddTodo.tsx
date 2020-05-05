@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { StyleSheet, TextInput, Button, View } from 'react-native';
+import { StyleSheet, TextInput, Button, View, Alert } from 'react-native';
 
 interface Props {
   onSubmit(title: string): void;
@@ -13,6 +13,8 @@ export function AddTodo({onSubmit}: Props) {
     if (todoItemValue.trim()) {
       onSubmit(todoItemValue);
       setTodoItemValue('');
+    } else {
+      Alert.alert('Новое дело не должно быть пустым');
     }
   }
 
