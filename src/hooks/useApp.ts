@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState } from 'react';
 
 interface TodoItem {
   id: string;
@@ -14,7 +14,7 @@ export default function useApp(): HookProps {
   const [todos, setTodos] = useState<TodoItem[]>([]);
 
   function addTodo(title: string) {
-    setTodos((prevState) => [...prevState, { id: Date.now().toString(), title}])
+    setTodos((prevState) => [{ id: Date.now().toString(), title}, ...prevState])
   }
 
   return {

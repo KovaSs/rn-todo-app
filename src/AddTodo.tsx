@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, TextInput, Button, View } from 'react-native';
 
 interface Props {
@@ -7,13 +7,23 @@ interface Props {
 }
 
 export function AddTodo({onSubmit}: Props) {
+  const [todoItemValue, setTodoItemValue] = useState<string>('');
+
   function pressHandler() {
-    onSubmit('Add new Todos');
+    if (todoItemValue.trim()) {
+      onSubmit(todoItemValue);
+      setTodoItemValue('');
+    }
   }
 
   return (
     <View style={styles.block}>
-      <TextInput style={styles.input} />
+      <TextInput
+        value={todoItemValue}
+        onChangeText={setTodoItemValue}
+        style={styles.input} 
+        placeholder="Введите название дела..."
+      />
       <Button title="Добавить" onPress={pressHandler} />
     </View>
   );
