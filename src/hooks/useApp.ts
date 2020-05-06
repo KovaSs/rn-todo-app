@@ -1,13 +1,11 @@
 import { useState } from 'react';
 
-interface TodoItem {
-  id: string;
-  title: string;
-}
+import { TodoItem } from '../types.d';
 
 interface HookProps {
   todos: TodoItem[];
   addTodo(title: string): void;
+  removeTodo(id: string): void;
 }
 
 export default function useApp(): HookProps {
@@ -17,8 +15,13 @@ export default function useApp(): HookProps {
     setTodos((prevState) => [{ id: Date.now().toString(), title}, ...prevState])
   }
 
+  function removeTodo(id: string) {
+    setTodos((prevState) => prevState.filter((item) => item.id !== id))
+  }
+
   return {
     todos,
-    addTodo
+    addTodo,
+    removeTodo,
   }
 }

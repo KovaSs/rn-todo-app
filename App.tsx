@@ -5,11 +5,16 @@ import { Navbar } from './src/Navbar'
 import { AddTodo } from './src/AddTodo'
 import { useApp } from './src/hooks'
 import { TodoItem } from './src/TodoItem';
+import * as TodoTypes from './src/types.d';
+
+interface FlatListType {
+  item: TodoTypes.TodoItem;
+}
 
 export default function App() {
   const { todos, addTodo } = useApp();
 
-  function renderTodoList({item}) {
+  function renderTodoList({ item }: FlatListType) {
     return <TodoItem key={item.id} todo={item} />
   }
 
