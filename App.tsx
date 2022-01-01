@@ -1,10 +1,13 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 
+import { Navbar } from './src/Navbar';
+
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
+      <Navbar />
+      <Text>Hello react native!</Text>
       <StatusBar style="auto" />
     </View>
   );
