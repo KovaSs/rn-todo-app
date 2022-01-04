@@ -1,14 +1,19 @@
 import { View, TextInput, Button, StyleSheet } from 'react-native'
 
 interface Props {
-  title?: string;
+  onSubmit(todoTitle: string): void;
 }
 
-export const AddTodo = ({ title }: Props) => {
+export const AddTodo = ({ onSubmit }: Props) => {
+
+  const pressHandler = () => {
+    // onSubmit();
+  }
+
   return (
     <View style={styles.block}>
       <TextInput style={styles.input} />
-      <Button title="Add" onPress={() => null}/>
+      <Button title="Add" onPress={pressHandler}/>
     </View>
   )
 }
