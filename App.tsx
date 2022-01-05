@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-import { Navbar, AddTodo } from './src';
+import { Navbar, AddTodo, Todo } from './src';
 
 interface TodoItem {
   id: string;
@@ -12,7 +12,10 @@ export default function App() {
   const [todos, setTodos] = useState<TodoItem[]>([]);
 
   const addTodo = (todoTitle: string) => {
-    setTodos((prevTodos) => [...prevTodos, { id: Date.now().toString(), title: todoTitle }])
+    setTodos((prevTodos) => [...prevTodos, {
+      id: Date.now().toString(),
+      title: todoTitle,
+    }])
   }
 
   return (
@@ -20,7 +23,11 @@ export default function App() {
       <Navbar title="Todo App" />
       <View style={styles.container}>
         <AddTodo onSubmit={addTodo} />
-        <Text>Hello react native!</Text>
+        <View>
+          {todos.map((todo) => (
+            <Todo key={todo.id} todo={todo} />
+          ))}
+        </View>
       </View>
     </View>
   );
